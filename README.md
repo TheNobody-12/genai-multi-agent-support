@@ -6,9 +6,7 @@ Built with **LangChain**, **LangGraph**, and **Streamlit** with flexible support
 
 ## 🎥 Demo Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rwBjXW65ONw?si=_kyTV9UyrQMA7hq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-[Click here to watch the demo video showcasing the functionality](https://youtu.be/rwBjXW65ONw)
+[![Watch the demo](https://img.youtube.com/vi/rwBjXW65ONw/0.jpg)](https://youtu.be/rwBjXW65ONw)
 
 ---
 
@@ -195,11 +193,6 @@ python mcp_server.py
 
 ---
 
-## 🎥 Demo Video
-
-[Demo video link placeholder - to be added after recording]
-
----
 
 ## 📝 License
 
