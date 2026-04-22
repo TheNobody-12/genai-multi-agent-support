@@ -194,6 +194,4 @@ python mcp_server.py
 ---
 
 
-## 📝 License
 
-This project is built as an assessment submission.
