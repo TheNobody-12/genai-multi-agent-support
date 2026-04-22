@@ -1,0 +1,23 @@
+[project]
+name = "genai-multi-agent-support"
+version = "0.1.0"
+description = "Generative AI-powered Multi-Agent Customer Support System"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-google-genai",
+    "langchain-openai",
+    "langchain-anthropic",
+    "pytest",
+    "pytest-mock",
+    "pytest-asyncio",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.pyright]
+include = ["."]
+venvPath = "."
+venv = "venv"
