@@ -1,6 +1,19 @@
 # 🤖 GenAI Multi-Agent Customer Support System
 
-A **Generative AI–powered Multi-Agent System** that enables customer support executives to interact with both structured database data and unstructured policy documents using natural language.
+<p align="center">
+  <img src="https://img.shields.io/badge/LLM-Gemini%20%7C%20OpenAI%20%7C%20Anthropic-blue" />
+  <img src="https://img.shields.io/badge/Framework-LangChain%20%2B%20LangGraph-orange" />
+  <img src="https://img.shields.io/badge/UI-Streamlit-red" />
+  <img src="https://img.shields.io/badge/VectorDB-ChromaDB-green" />
+  <img src="https://img.shields.io/badge/Database-SQLite-lightgrey" />
+  <img src="https://img.shields.io/badge/Status-Production--Ready-brightgreen" />
+</p>
+
+<p align="center">
+  A <b>Generative AI–powered Multi-Agent System</b> that enables customer support teams to query 
+  <b>structured databases</b> and <b>unstructured documents</b> using natural language.
+</p>
+
 
 Built with **LangChain**, **LangGraph**, and **Streamlit** with flexible support for **Google Gemini**, **OpenAI**, **Anthropic**, and local LLMs (via **LM Studio**).
 
@@ -175,13 +188,56 @@ genai-multi-agent-support/
 
 ---
 
-## 🔧 MCP Server
+#
+## 🔧 MCP Server Integration
 
-The system exposes an MCP server for integration with MCP-compatible clients:
+The system exposes a Model Context Protocol (MCP) server for integration with MCP-compatible clients like Claude Desktop. This allows you to interact with the support agents as tools directly within other AI applications.
+
+### 1. Available MCP Tools
+
+| Tool | Description |
+|------|-------------|
+| `ask_support_assistant` | Routes natural language questions to either the SQL or RAG agent automatically. |
+| `upload_policy_document` | Uploads and indexes a PDF document into the knowledge base. |
+| `get_knowledge_base_stats` | Returns statistics about the indexed knowledge base. |
+
+### 2. Connecting to Claude Desktop
+
+To use these agents as tools directly in Claude Desktop:
+
+1.  **Locate your Claude Desktop config file:**
+    - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+2.  **Add the server configuration:**
+    Update the `mcpServers` object with the absolute paths to your project. Use your full system path for `command` and `args`.
+
+```json
+{
+  "mcpServers": {
+    "customer-support-agent": {
+      "command": "/genai-multi-agent-support/venv/bin/python",
+      "args": [
+        "/genai-multi-agent-support/mcp_server.py"
+      ],
+      "env": {
+        "LLM_PROVIDER": "gemini",
+        "GEMINI_API_KEY": "your-gemini-api-key-here"
+      }
+    }
+  }
+}
+```
+
+3.  **Restart Claude Desktop:** Once restarted, a 🔌 icon will appear. Claude can now call your local support assistant to query your database or policies.
+
+### 3. Running Manually (for Debugging)
+
+To run the server in `stdio` mode for testing or debugging:
 
 ```bash
+source venv/bin/activate
 python mcp_server.py
-```
 
 ### Available MCP Tools
 
